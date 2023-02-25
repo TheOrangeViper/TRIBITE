@@ -7,9 +7,9 @@
 
 # Front-end
 
-## Home Page
+### Home Page
 * Search bar
-## Food Banks
+### Food Banks
 * Names
 * Times
 * Locations
