@@ -6,7 +6,6 @@ TRINITE's new app.
 
 **Developers**:
 
-- Begin by cloning the repository to your machine
 - **Prerequisites For Developers**:
   - Node.js(^14.17.6)
   - npm(6.14.15)
