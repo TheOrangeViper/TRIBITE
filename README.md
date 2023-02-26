@@ -1,6 +1,6 @@
 # TRIBITE
 
-The project is based on the Zero Hunger goal. It is designed to reduce food waste through meal plans. It consist of four icons, "Food Banks", "Inventory", "Favorite Meals" and "Grocery List".
+_The project is based on the Zero Hunger goal. It is designed to reduce food waste through meal plans. It consist of four icons, "Food Banks", "Inventory", "Favorite Meals" and "Grocery List"._
 
 # Installation
 
