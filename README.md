@@ -1,2 +1,7 @@
 # TRIBITE
-TRINITE's new app. 
+
+TRINITE's new app.
+
+```PS
+npm install
+```
