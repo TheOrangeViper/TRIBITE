@@ -6,7 +6,8 @@ Samia-  DEFAULT HOME SCREEN
 3. Sign Up Confirmation Screen
 4. Forgot Password Screen
 5. New Password Screen
-(DUE MONDAY)
+
+( ALL DUE MONDAY)
 
 Kething- 
 
