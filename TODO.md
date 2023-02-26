@@ -1,14 +1,20 @@
 # TO-DO
 
-Samia-  DEFAULT HOME SCREEN
-1. Sign In Screen
-2. Sign Up Screen
-3. Sign Up Confirmation Screen
-4. Forgot Password Screen
-5. New Password Screen
+## Overall
 
-( ALL DUE MONDAY)
+- Create Default Home Screen
+- Create Sign Up/Sign In Screens
 
-Kething- 
+## Samia
 
-Fabiha- 
+- Create Default Home Screen | Due Monday
+- Create Sign Up/Sign In Screens | Due Monday
+  1. Sign In Screen
+  2. Sign Up Screen
+  3. Sign Up Confirmation Screen
+  4. Forgot Password Screen
+  5. New Password Screen
+
+## Keting
+
+## Fabiha
