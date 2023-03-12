@@ -2,26 +2,38 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import {auth} from '../firebase'
 import { useNavigation } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
+  
 
   const navigation = useNavigation()
-  const handleSignOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        navigation.replace("Login")
-      })
-      .catch(error => alert(error.message))
+  // const handleSignOut = () => {
+  //   auth
+  //     .signOut()
+  //     .then(() => {
+  //       navigation.replace("Login")
+  //     })
+  //     .catch(error => alert(error.message))
+  // }
+  const handleSettings = () => {
+    navigation.replace("Settings")
   }
 
   return (
     <View style={styles.container}>
       <Text>Email: {auth.currentUser?.email}</Text>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={handleSignOut}
         style={styles.button}>
         <Text style = {styles.buttonText}>Sign out</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity
+        onPress={handleSettings}
+        style={styles.button}>
+        <Text style = {styles.buttonText}>Settings</Text>
       </TouchableOpacity>
     </View>
   )
@@ -41,7 +53,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius:10,
     alignItems:'center',
-    marginTop:40,
+    marginTop:20,
   },
   buttonOutline:{
     backgroundColor:'white',

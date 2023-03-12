@@ -39,6 +39,16 @@ const LoginScreen = () => {
         .catch(error => alert(error.message))
     }
 
+    const forgotPassword = () => {
+        auth
+            .sendPasswordResetEmail(email)
+            .then(() => {
+                alert("Password reset sent to your email")
+            }).catch((error) => {
+                alert("Enter an email, then try again")
+            })
+    }
+
   return (
     <KeyboardAvoidingView
         style={styles.container}
@@ -79,6 +89,11 @@ const LoginScreen = () => {
                 style={[styles.button, styles.buttonOutline]}
             >
                 <Text style={styles.buttonOutlineText}>Register</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={forgotPassword}>
+                <Text style = {styles.link}>Forgot Password?</Text>
+
             </TouchableOpacity>
 
         </View>
@@ -146,5 +161,10 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'75%',
         objectFit: 'contain',
+    },
+    link:{
+        padding: '10%',
+        color: '#041e42',
+        fontWeight: 'bold',
     }
 })
