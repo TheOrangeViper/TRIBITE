@@ -13,7 +13,7 @@ const LoginScreen = () => {
 
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                navigation.replace("Home")
+                navigation.replace("Tabs")
             }
         })
         return unsubscribe
