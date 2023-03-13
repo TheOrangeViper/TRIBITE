@@ -15,9 +15,6 @@ const SettingScreen = () => {
             })
             .catch(error => alert(error.message))
     }
-    const returnHome = () => {
-        navigation.replace("Home")
-    }
     const handleSignOut = () => {
         auth
           .signOut()
@@ -26,21 +23,22 @@ const SettingScreen = () => {
           })
           .catch(error => alert(error.message))
       }
+    const goToProfile = () => {
+        navigation.replace("Profile")
+    }
 
   return (
     <KeyboardAvoidingView style={styles.container}>
-        {/* need this until I get nav bar working */}
-        <View>
-            <TouchableOpacity
-                onPress = {returnHome}>
-                <Ionicons name="home" size={32} color="#041e42" />
-            </TouchableOpacity>
-        </View>
         <View>
           <Text style={styles.header1}>Settings</Text>
         </View>
 
         <View style={styles.buttonList}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress = {goToProfile}>
+                <Text style={styles.buttonText}>User Profile</Text>
+            </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
                 onPress = {changePassword}>

@@ -10,19 +10,21 @@ const HomeScreen = () => {
   
 
   const navigation = useNavigation()
-  const handleSettings = () => {
-    navigation.replace("Settings")
-  }
+  // const handleSettings = () => {
+  //   navigation.replace("Settings")
+  // }
 
   return (
     <View style={styles.container}>
+      <Text style={styles.header1}>Home</Text>
       <Text>Email: {auth.currentUser?.email}</Text>
+      <Text>Welcome {auth.currentUser?.displayName}!</Text>
       
-      <TouchableOpacity
-        onPress={handleSettings}
+      {/* <TouchableOpacity
+        onPress={()=>{}}
         style={styles.button}>
         <Text style = {styles.buttonText}>Settings</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }
@@ -32,8 +34,12 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop:'20%',
+    marginHorizontal:'10%',
+  },
+  header1: {
+    fontSize:50,
+    fontWeight: 'bold',
   },
   button:{
     backgroundColor: '#041e42',

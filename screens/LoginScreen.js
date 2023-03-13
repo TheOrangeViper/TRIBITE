@@ -34,7 +34,7 @@ const LoginScreen = () => {
            .signInWithEmailAndPassword(email, password)
            .then(userCredentials => {
             const user = userCredentials.user;
-            console.log(user.email, " logged in!");
+            console.log(user.displayName, " logged in!");
         })
         .catch(error => alert(error.message))
     }
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
         paddingVertical:10,
         borderRadius:10,
         marginTop:5,
-
     },
     buttonContainer:{
         width: '60%',
