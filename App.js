@@ -36,7 +36,7 @@ function Tabs(){
           } else if (rn === "Settings") {
             iconName = 'settings'
             iconColor = focused? '#99cc33' : '#041e42'
-          } else if (rn === "Inventory") {
+          } else if (rn === "Pantry") {
             iconName = 'folder'
             iconColor = focused? '#99cc33' : '#041e42'
           } else if (rn === "Grocery List") {
@@ -88,7 +88,7 @@ function Tabs(){
           tabBarLabelStyle: {
             padding:10,
           }}}
-        name="Inventory"
+        name="Pantry"
         component={InventoryScreen}/>
 
       <Tab.Screen

@@ -5,7 +5,7 @@ import React from 'react'
 const InventoryScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.container}>
-      <Text style={styles.header1}>Inventory</Text>
+      <Text style={styles.header1}>Pantry</Text>
     </KeyboardAvoidingView>
   )
 }

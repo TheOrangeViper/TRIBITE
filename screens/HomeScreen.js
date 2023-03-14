@@ -12,6 +12,16 @@ const HomeScreen = () => {
   //   navigation.replace("Settings")
   // }
 
+  function tile(message, repeat){
+    let tile = [];
+    for (let i = 0; i < repeat; i++){
+      tile.push(<Text style={styles.text}>{message}{i+1}</Text>);
+    }
+    return(
+      tile
+    )
+  } 
+
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView 
@@ -32,54 +42,23 @@ const HomeScreen = () => {
           horizontal={true}
           style={styles.horizontalScroll}>
 
-          <Text style={styles.text}>
-          Meal placeholder</Text>
-          <Text style={styles.text}>
-          Meal placeholder</Text>
-          <Text style={styles.text}>
-          Meal placeholder</Text>
-          <Text style={styles.text}>
-          Meal placeholder</Text>
-          <Text style={styles.text}>
-          Meal placeholder</Text>
-          <Text style={styles.text}>
-          Meal placeholder</Text>
+          {tile("Meal Placeholder", 5)}
         </ScrollView>
         <Text style={styles.header2}>Snacks</Text>
+        
         <ScrollView
           horizontal={true}
           style={styles.horizontalScroll}>
 
-          <Text style={styles.text}>
-          Snack placeholder</Text>
-          <Text style={styles.text}>
-          Snack placeholder</Text>
-          <Text style={styles.text}>
-          Snack placeholder</Text>
-          <Text style={styles.text}>
-          Snack placeholder</Text>
-          <Text style={styles.text}>
-          Snack placeholder</Text>
-          <Text style={styles.text}>
-          Snack placeholder</Text>
+          {tile("Snack Placeholder", 5)}
+
         </ScrollView>
         <Text style={styles.header2}>Drinks</Text>
         <ScrollView
           horizontal={true}
           style={styles.horizontalScroll}>
 
-          <Text style={styles.text}>
-          Drink placeholder</Text>
-          <Text style={styles.text}>
-          Drink placeholder</Text>
-          <Text style={styles.text}>
-          Drink placeholder</Text>
-          <Text style={styles.text}>
-          Drink placeholder</Text>
-          <Text style={styles.text}>
-          Drink placeholder</Text>
-          <Text style={styles.text}>
-          Drink placeholder</Text>
+          {tile("Drink Placeholder", 5)}
         </ScrollView>
       </ScrollView>
     </SafeAreaView>
@@ -100,7 +79,7 @@ const styles = StyleSheet.create({
   },
   horizontalScroll:{
     // backgroundColor:'red',
-    paddingLeft:'10%',
+    paddingHorizontal:'10%',
     width:'100%'
     
   },
