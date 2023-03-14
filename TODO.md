@@ -2,17 +2,10 @@
 
 ## Overall
 
-- Create Default Home Screen
-- Create Sign Up/Sign In Screens 
-  1. Sign In Screen
-  2. Sign Up Screen
-  3. Sign Up Confirmation Screen
-  4. Forgot Password Screen
-  5. New Password Screen
+- Code
+  1. Update code to match layouts 
+  2. Profile upload
 
 - Figma Desgin 
-  1. Home Screen 
-  2. Grocery List screen 
-  3. Saved Recipe/Ingridiants screen 
-  4. Inventory (Pantry) screen 
-  5. Account/setting screen 
+  1. Saved Recipe/Ingridiants screen 
+  2. Inventory (Pantry) screen 
