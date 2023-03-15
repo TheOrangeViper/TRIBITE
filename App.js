@@ -72,24 +72,6 @@ function Tabs(){
           }} 
         name="Home"
         component={HomeScreen}/>
-      
-      <Tab.Screen
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: {
-            padding:10,
-          }}}
-        name="Settings"
-        component={SettingScreen}/>
-
-      <Tab.Screen
-        options={{
-          headerShown: false,
-          tabBarLabelStyle: {
-            padding:10,
-          }}}
-        name="Pantry"
-        component={InventoryScreen}/>
 
       <Tab.Screen
         options={{
@@ -100,6 +82,16 @@ function Tabs(){
         name="Grocery List"
         component={GroceryListScreen}/>
 
+
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarLabelStyle: {
+            padding:10,
+          }}}
+        name="Pantry"
+        component={InventoryScreen}/>
+      
       <Tab.Screen
         options={{
           headerShown: false,
@@ -108,7 +100,20 @@ function Tabs(){
           }}}
         name="Saved"
         component={SavedScreen}/>
+
+
+
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarLabelStyle: {
+            padding:10,
+          }}}
+        name="Settings"
+        component={SettingScreen}/>
     </Tab.Navigator>
+
+    
   )
 }
 
