@@ -10,7 +10,7 @@ import SettingScreen from './screens/SettingScreen';
 import InventoryScreen from './screens/InventoryScreen';
 import GroceryListScreen from './screens/GroceryListScreen';
 import SavedScreen from './screens/SavedScreen';
-import Profile from './screens/Profile';
+import Profile from './screens/ProfileScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs';
 

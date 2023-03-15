@@ -37,7 +37,7 @@ const SettingScreen = () => {
             <TouchableOpacity
                 style={styles.button}
                 onPress = {goToProfile}>
-                <Text style={styles.buttonText}>User Profile</Text>
+                <Text style={styles.buttonText}>Edit User Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
