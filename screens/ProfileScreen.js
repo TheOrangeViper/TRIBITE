@@ -1,6 +1,6 @@
 import { Image, KeyboardAvoidingView, TouchableOpacity, TextInput, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 import {getAuth, updateProfile} from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native'
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -9,20 +9,32 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Profile = () => {
     const navigation = useNavigation()
+
     const goToSettings = () => {
         navigation.navigate('Tabs', {screen: 'Settings'});
     }
+
     const [name, setDisplayName] = React.useState('')
     const [photoURL, setPhotoURL] = React.useState('')
     
     let user = auth.currentUser;
     let currentName = user.displayName
-    let currentPfp
-
+    let currentPfp = '../assets/default_pfp.png'
+    
+    
+    const testThisForMe = () => {
+        console.log('user pfp = ', user.photoURL);
+        // if (user.photoURL === null) {
+        //     currentPfp = '../assets/default_pfp.png'
+        //     updateUserProfile({displayName: currentName, photoURL: currentPfp})
+        // }
+        // console.log('user pfp now = ', user.photoURL);
+        // console.log(currentPfp)
+    }
     
 
     function updateUserProfile(){
-        console.log(user.displayName, " changed name to ", name)
+        // console.log(user.displayName, " changed name to ", name)
         
         if (name === '') {
             currentName => setDisplayName(currentName)
@@ -32,7 +44,7 @@ const Profile = () => {
         }
         user.updateProfile({
             displayName: currentName,
-            photoURL: photoURL
+            photoURL: currentPfp
         }).then(function() {
             alert("Your changes have been saved!")
             let displayName = user.displayName;
@@ -52,13 +64,12 @@ const Profile = () => {
         <Text style={styles.header2}>Profile Picture:</Text>
         <View style={styles.horizontalContainer}>  
             <View style={styles.imageContainer}>
-                <Image source={currentPfp} style={styles.image}/>
+                <Image src={user.photoURL} style={styles.image}/>
                 
             </View>
             <View style = {styles.iconContainer}>
                 <Text>Upload Profile Picture</Text>
-                <TouchableOpacity>
-                    
+                <TouchableOpacity onPress={testThisForMe}>
                     <Ionicons name = {"add-circle"} size = {100} color={'red'}/>
                 </TouchableOpacity>
             </View>
@@ -143,9 +154,10 @@ const styles = StyleSheet.create({
     },
     image:{
         paddingRight: 10,
-        width:200,
-        height: 200,
-        objectFit: 'contain',
+        width:'100%',
+        height: '100%',
+        objectFit: 'cover',
+        borderRadius:20,
     },
     iconContainer:{
         width:'50%',

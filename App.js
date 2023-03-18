@@ -11,6 +11,7 @@ import InventoryScreen from './screens/InventoryScreen';
 import GroceryListScreen from './screens/GroceryListScreen';
 import SavedScreen from './screens/SavedScreen';
 import Profile from './screens/ProfileScreen';
+import RecipeScreen from './screens/RecipeScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs';
 
@@ -124,6 +125,7 @@ export default function App() {
         <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
         <Stack.Screen options={{headerShown: false}} name="Tabs" component={Tabs} />
         <Stack.Screen options={{headerShown: false}} name="Profile" component={Profile} />
+        <Stack.Screen options={{headerShown: false}} name="Recipe" component={RecipeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
