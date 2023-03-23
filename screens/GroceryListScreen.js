@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-
+import Food from '../components/Food'
 
 
 const GroceryListScreen = () => {
@@ -12,7 +12,8 @@ const GroceryListScreen = () => {
 
         <View style={styles.items}>
           {/*This is where the food items will go!*/}
-          <Food />
+          <Food text={'food 1'} />
+          <Food text={'food 1'} />
 
         </View>
       </View>
