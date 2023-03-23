@@ -12,8 +12,8 @@ const GroceryListScreen = () => {
 
         <View style={styles.items}>
           {/*This is where the food items will go!*/}
-          <Food text={'food 1'} />
-          <Food text={'food 1'} />
+          <Food text={'Apple'} />
+          <Food text={'Banana'} />
 
         </View>
       </View>
@@ -26,7 +26,6 @@ export default GroceryListScreen
 const styles = StyleSheet.create({
   container: {
     flex:1, 
-    backgroundColor:'white',
     marginTop:'20%',
     marginHorizontal:'10%'
   },
@@ -39,5 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontWeight:'bold'
   },
-  items: {},
+  items: {
+    marginTop: 30, 
+  },
 })

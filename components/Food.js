@@ -15,15 +15,31 @@ const Food = (props) => {
 
 
 const styles = StyleSheet.create({
-
     item: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'white',
         padding: 15, 
-        borderRadius:10,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 20,
     },
-    itemLeft: {},
-    square: {},
-    itemText: {},
+    itemLeft: { 
+      flexDirection: 'row',
+      alignItems: 'center',
+      flexWrap: "wrap"
+    },
+    square: {
+      width: 24, 
+      height: 24,
+      backgroundColor: '#99CC33',
+      opacity: 0.4, 
+      borderRadius: 5,
+      marginRight: 15, 
+    },
+    itemText: {
+        maxWidth: '80%',
+    },
 })
 
 export default Food;
