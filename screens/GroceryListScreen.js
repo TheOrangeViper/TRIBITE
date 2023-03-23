@@ -13,6 +13,7 @@ const GroceryListScreen = () => {
         <View style={styles.items}>
           {/*This is where the food items will go!*/}
           <Food />
+
         </View>
       </View>
     </View>
