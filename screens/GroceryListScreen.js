@@ -1,11 +1,21 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+
 
 const GroceryListScreen = () => {
-  return (
-    <KeyboardAvoidingView style={styles.container}>
-      <Text style={styles.header1}>Grocery List</Text>
-    </KeyboardAvoidingView>
+  return ( 
+    <View style={styles.container}>
+      {/* Grocery List */}
+      <View style={styles.tasksWrapper}>
+        <Text style={styles.sectionTitle}>Grocery List</Text>
+
+        <View style={styles.items}>
+          {/*This is where the food items will go!*/}
+          <Food />
+        </View>
+      </View>
+    </View>
   )
 }
 
@@ -13,12 +23,19 @@ export default GroceryListScreen
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex:1, 
+    backgroundColor:'white',
     marginTop:'20%',
-    marginHorizontal:'10%',
+    marginHorizontal:'10%'
   },
-  header1: {
-    fontSize:50,
-    fontWeight: 'bold',
+  taskWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
+
   },
+  sectionTitle: {
+    fontSize: 50,
+    fontWeight:'bold'
+  },
+  items: {},
 })
