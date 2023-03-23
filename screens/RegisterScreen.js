@@ -1,63 +1,69 @@
+import React, { useState, useEffect } from "react";
 import {
-  Image,
   KeyboardAvoidingView,
-  useState,
-  StyleSheet,
-  Text,
-  TextInput,
-  Touchable,
-  TouchableOpacity,
   View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
 } from "react-native";
-import React from "react";
-import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/core";
+import { auth } from "../firebase";
 
-const LoginScreen = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-
+const SignUpScreen = () => {
   const navigation = useNavigation();
-
-  React.useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.replace("Tabs");
-      }
-    });
-    return unsubscribe;
-  }, []);
-
-  const handleSignUp = () => {
-    navigation.navigate("Register");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
+  const confirmedPassword = (password, passwordRepeat) => {
+    if (password == passwordRepeat) {
+      return password;
+    } else {
+      return console.warn("Your passwords do not match");
+    }
   };
-
-  const handleLogin = () => {
+  const handleSignUp = () => {
     auth
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(
+        email,
+        confirmedPassword(password, passwordRepeat)
+      )
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log("Logged in with:" + user.email);
-        if (user.emailVerified) {
-          navigation.navigate("Home");
-          console.log("hey");
-        } else {
-          navigation.navigate("ConfirmRegister");
-        }
+        console.log("Registerd with:" + user.email);
       })
       .catch((error) => alert(error.message));
   };
 
-  const forgotPassword = () => {
-    navigation.navigate("ForgotPassword");
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("ConfirmRegister");
+      }
+    });
+    return unsubscribe;
+  });
+
+  const onRegisterPressed = () => {
+    navigation.navigate("ConfirmSignUp");
+  };
+  // const onSignInGooglePressed = () => {
+  //   console.warn("Sign in with google pressed");
+  // };
+  const onSignInPressed = () => {
+    navigation.navigate("SignIn");
   };
 
+  const onTermsOfUsePressed = () => {
+    console.warn("Terms of Use Pressed");
+  };
+
+  const onPrivacyPolicyPressed = () => {
+    console.warn("Privacy Policy Pressed");
+  };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={styles.imageContainer}>
-        <Image source={require("../assets/logo6.png")} style={styles.image} />
-      </View>
-
+      <Text style={styles.text}>Create an account</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -72,29 +78,42 @@ const LoginScreen = () => {
           style={styles.input}
           secureTextEntry
         />
+        <TextInput
+          placeholder="Repeat Password"
+          value={passwordRepeat}
+          onChangeText={(text) => setPasswordRepeat(text)}
+          style={styles.input}
+          secureTextEntry
+        />
+        <Text style={{ fontSize: 15, flexWrap: "wrap" }}>
+          By registering, you confirm that you accept our{" "}
+          <Text style={styles.link} onPress={onTermsOfUsePressed}>
+            Terms of Use
+          </Text>{" "}
+          and{" "}
+          <Text style={styles.link} onPress={onPrivacyPolicyPressed}>
+            Privacy Policy
+          </Text>
+        </Text>
       </View>
-
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleSignUp}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={forgotPassword}>
-          <Text style={styles.link}>Forgot Password?</Text>
-        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default LoginScreen;
-
 const styles = StyleSheet.create({
+  text: {
+    color: "#041e42",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -158,3 +177,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export default SignUpScreen;
