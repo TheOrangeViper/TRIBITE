@@ -1,22 +1,38 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Food from '../components/Food'
 
 
 const GroceryListScreen = () => {
   return ( 
     <View style={styles.container}>
+
       {/* Grocery List */}
-      <View style={styles.tasksWrapper}>
+      <View style={styles.foodWrapper}>
         <Text style={styles.sectionTitle}>Grocery List</Text>
 
         <View style={styles.items}>
           {/*This is where the food items will go!*/}
           <Food text={'Apple'} />
           <Food text={'Banana'} />
-
         </View>
+
       </View>
+
+
+      {/* Write a food */}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeFoodWrapper}
+      >
+        <TextInput style={styles.input} placeholder={'Write food iteams'}/>
+
+        <TouchableOpacity>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   )
 }
@@ -41,4 +57,15 @@ const styles = StyleSheet.create({
   items: {
     marginTop: 30, 
   },
+  writeFoodWrapper: {
+    position: 'absolute',
+    bottom: 60,
+    width: '100',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center', 
+  },
+  input: {},
+  addWrapper: {},
+  addText: {},
 })
