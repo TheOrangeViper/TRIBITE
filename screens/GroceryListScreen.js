@@ -34,11 +34,10 @@ const GroceryListScreen = () => {
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </View>
-  )
+  );
 }
 
 export default GroceryListScreen
-
 const styles = StyleSheet.create({
   container: {
     flex:1, 
@@ -60,12 +59,20 @@ const styles = StyleSheet.create({
   writeFoodWrapper: {
     position: 'absolute',
     bottom: 60,
-    width: '100',
+    width: 100,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center', 
   },
-  input: {},
+  input: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    background: '#FFF',
+    borderRadius: 60,
+    borderColor: '#C0C0C',
+    borderWidth: 1, 
+    Width: 250,
+  },
   addWrapper: {},
   addText: {},
 })
