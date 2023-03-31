@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 import Recipe from './Recipe';
 
 
+
 const HomeScreen = () => {
-  
   const [currentRecipe, setCurrentRecipe] = React.useState({name:"HA LAMO"});
 
   const navigation = useNavigation()
@@ -23,6 +23,10 @@ const HomeScreen = () => {
     navigation.replace("Recipe")
   }
 
+  const testDb = () => {
+    console.log("pressed");
+    // console.log("db be :", testing.data);
+  }
   
 
   // CAn I use useEffect for this? It listens to see if it has been clicked, and if it has, then WHOO!
@@ -34,9 +38,15 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <Text style={styles.header1}>Home</Text>
+
+        <TouchableOpacity style={styles.tileContainer} onPress={testDb}>
+          <Text>Help me</Text>
+        </TouchableOpacity>
+
         <TextInput placeholder={"Search"} style={styles.searchBar}></TextInput>
         
         <Text style={styles.header2}>Meals</Text>
+        
         <ScrollView horizontal={true} style={styles.horizontalScroll}>
 
           <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {testing.dogWater[0].isActive = true; console.log(testing.dogWater[0].name, " was pressed"); redirect()}} >
@@ -68,7 +78,7 @@ const HomeScreen = () => {
           style={styles.horizontalScroll}>
 
           {testing.dogWater.map((recipe)=>{
-            return(<Recipe name={recipe.name} photoUrl={recipe.photoUrl}/>);
+            return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl}/>);
             }
           )}
 

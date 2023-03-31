@@ -28,10 +28,10 @@ const RecipeScreen = () => {
   return (
     <View style={styles.container}>
       <Text style = {styles.header1}>
-        How to make : {name}
+        {name}
         
       </Text>
-      <Text>These be your ingredients : {ingredients}</Text>
+      <Text>These be your ingredients : </Text>
       <TouchableOpacity onPress={redirect}>
         <Text>I am a button</Text>
       </TouchableOpacity>
