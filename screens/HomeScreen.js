@@ -39,9 +39,9 @@ const HomeScreen = () => {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <Text style={styles.header1}>Home</Text>
 
-        <TouchableOpacity style={styles.tileContainer} onPress={testDb}>
+        {/* <TouchableOpacity style={styles.tileContainer} onPress={testDb}>
           <Text>Help me</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TextInput placeholder={"Search"} style={styles.searchBar}></TextInput>
         
