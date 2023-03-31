@@ -1,18 +1,17 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 
 
 let testing = require('../screens/Testing')
-let name
-let ingredients
+
+let currentRecipe
 
 const RecipeScreen = () => {
     for (i = 0; i < testing.dogWater.length; i++){
         if (testing.dogWater[i].isActive === true){
-            name = testing.dogWater[i].name
-            ingredients = testing.dogWater[i].ingredients
+            currentRecipe = testing.dogWater[i]
         } 
     }
 
@@ -27,14 +26,25 @@ const RecipeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style = {styles.header1}>
-        {name}
-        
-      </Text>
-      <Text>These be your ingredients : </Text>
       <TouchableOpacity onPress={redirect}>
-        <Text>I am a button</Text>
+        <Text>Back to Home</Text>
       </TouchableOpacity>
+
+      <Text style = {styles.header1}>{currentRecipe.name}</Text>
+
+      {/* <Text>These be your ingredients : </Text> */}
+      <View style={styles.imageContainer}>
+        <Image source={{uri: currentRecipe.photoUrl}} style={styles.image}/>
+      </View>
+      <View>
+        <Text>Duration : {currentRecipe.duration} minutes</Text>
+        <Text>Cuisine : {currentRecipe.cuisine_type}</Text>
+        <Text>Servings : {currentRecipe.servings}</Text>
+        <Text>You will need:</Text>
+        
+      </View>
+      
+      
     </View>
   )
 }
@@ -48,7 +58,19 @@ const styles = StyleSheet.create({
         marginHorizontal:'10%',
       },
       header1: {
-        fontSize:50,
+        fontSize:30,
         fontWeight: 'bold',
+        paddingVertical: 10,
+      },
+      imageContainer: {
+        padding:5,
+        height:'30%'
+      },
+      image:{
+        padding: 5,
+        width:'100%',
+        height:'100%',
+        objectFit: 'cover',
+        borderRadius:20,
       },
 })
