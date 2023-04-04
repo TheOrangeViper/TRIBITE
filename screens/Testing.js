@@ -14,7 +14,7 @@ let dogWater = [
     {
         _id:"64150e6e52d76ec312c13981",
         name:"Green Onion Garlic Naan Bread",
-        cusine_type:"Indian",
+        cuisine_type:"Indian",
         duration:38,
         servings:6,
         ingredients:[
@@ -63,7 +63,7 @@ let dogWater = [
     {
         _id:"6415167c52d76ec312c13986",
         name:"Chicken Patties",
-        cusine_type:"American",
+        cuisine_type:"American",
         duration:35,
         servings:6,
         ingredients:[
