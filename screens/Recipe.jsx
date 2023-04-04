@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     tileContainer : {
         borderWidth:2,
         borderRadius:20,
-        marginRight:30,
+        // marginRight:30,
         marginVertical:30,
         backgroundColor:'white',
         padding:10,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
@@ -25,27 +25,45 @@ const RecipeScreen = () => {
     }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={redirect}>
-        <Text>Back to Home</Text>
-      </TouchableOpacity>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={redirect}>
+          <Text>Back to Home</Text>
+        </TouchableOpacity>
 
-      <Text style = {styles.header1}>{currentRecipe.name}</Text>
+      
+        <ScrollView>
+          <Text style = {styles.header1}>{currentRecipe.name}</Text>
+          <View style={styles.imageContainer}>
+            <Image source={{uri: currentRecipe.photoUrl}} style={styles.image}/>
+          </View>
+          <View>
+            <Text>Duration : {currentRecipe.duration} minutes</Text>
+            <Text>Cuisine : {currentRecipe.cuisine_type}</Text>
+            <Text>Servings : {currentRecipe.servings}</Text>
 
-      {/* <Text>These be your ingredients : </Text> */}
-      <View style={styles.imageContainer}>
-        <Image source={{uri: currentRecipe.photoUrl}} style={styles.image}/>
+            <Text>You will need:</Text>
+                {currentRecipe.ingredients.map((item)=>{
+                return(
+                  <Text key={item.type}>{item.quantity} | {item.type}</Text>);
+                })}
+                <Text>Instructions</Text>
+            {currentRecipe.instructions.map((step)=>{
+            return(
+              <Text key={step} style={styles.text}>
+                {step}
+                {/* {console.log(step)} */}
+              </Text>);
+            })}
+        
       </View>
-      <View>
-        <Text>Duration : {currentRecipe.duration} minutes</Text>
-        <Text>Cuisine : {currentRecipe.cuisine_type}</Text>
-        <Text>Servings : {currentRecipe.servings}</Text>
-        <Text>You will need:</Text>
 
-      </View>
+      
+      </ScrollView>
       
       
     </View>
+    </SafeAreaView>
   )
 }
 
@@ -53,8 +71,9 @@ export default RecipeScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
-        marginTop:'20%',
+        // flex:1,
+        marginTop:'10%',
+        marginBottom: '20%',
         marginHorizontal:'10%',
       },
       header1: {
@@ -64,7 +83,7 @@ const styles = StyleSheet.create({
       },
       imageContainer: {
         padding:5,
-        height:'30%'
+        height:300
       },
       image:{
         padding: 5,
@@ -73,4 +92,7 @@ const styles = StyleSheet.create({
         objectFit: 'cover',
         borderRadius:20,
       },
+      text:{
+        marginBottom:30,
+      }
 })

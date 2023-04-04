@@ -7,7 +7,7 @@ import Recipe from './Recipe';
 
 
 const HomeScreen = () => {
-  const [currentRecipe, setCurrentRecipe] = React.useState({name:"HA LAMO"});
+  // const [currentRecipe, setCurrentRecipe] = React.useState({name:"HA LAMO"});
 
   const navigation = useNavigation()
 
@@ -39,44 +39,16 @@ const HomeScreen = () => {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <Text style={styles.header1}>Home</Text>
 
-        {/* <TouchableOpacity style={styles.tileContainer} onPress={testDb}>
-          <Text>Help me</Text>
-        </TouchableOpacity> */}
-
         <TextInput placeholder={"Search"} style={styles.searchBar}></TextInput>
         
-        {/* <Text style={styles.header2}>Meals</Text>
-        
-        <ScrollView horizontal={true} style={styles.horizontalScroll}>
-
-          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {db.dogWater[0].isActive = true; console.log(db.dogWater[0].name, " was pressed"); redirect()}} >
-            <View style = {styles.imageContainer}>
-              <Image source={{uri: db.dogWater[0].photoUrl}} style={styles.image}/>
-            </View>
-            <Text style = {styles.othertext}> {db.dogWater[0].name} </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {db.dogWater[1].isActive = true; console.log(db.dogWater[1].name, " was pressed"); redirect()}} >
-            <View style = {styles.imageContainer}>
-              <Image source={{uri: db.dogWater[1].photoUrl}} style={styles.image}/>
-            </View>
-            <Text style = {styles.othertext}> {db.dogWater[1].name} </Text>
-          </TouchableOpacity> */}
-
-          {/* <Recipe key = {testWork.name} name = {testWork.name} ingrediantCount = {testWork.ingrediantCount} image={testWork.image}/> */}
-
-          {/* {recipes.map((recipe) => 
-            //the name is the key since each recipe has a unique name 
-            <Recipe key={recipe.name} name={recipe.name} ingrediantCount={recipe.ingrediantCount} image={recipe.image}/>
-          )} */}
-
-        {/* </ScrollView> */}
         <Text style={styles.header2}>Recipes for You</Text>
 
+        <View style = {styles.itemContainer}>
         {db.dogWater.map((recipe)=>{
             return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl}/>);
-            }
-          )}
+            })}
+        </View>
+        
       </ScrollView>
     </SafeAreaView>
   )
@@ -89,6 +61,10 @@ const styles = StyleSheet.create({
     flex:1,
     marginBottom:'20%',
     justifyContent:'center',
+    // alignItems: 'center'
+  }, 
+  itemContainer: {
+    alignItems:'center'
   },
   scrollView:{
     // marginTop:'20%',
