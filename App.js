@@ -19,6 +19,7 @@ import GroceryListScreen from "./screens/GroceryListScreen";
 import SavedScreen from "./screens/SavedScreen";
 import Profile from "./screens/ProfileScreen";
 import RecipeScreen from "./screens/RecipeScreen";
+import GpsScreen from "./screens/GpsScreen";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BottomTabBarHeightContext } from "@react-navigation/bottom-tabs";
 
@@ -51,7 +52,10 @@ function Tabs() {
           } else if (rn === "Saved") {
             iconName = "bookmark";
             iconColor = focused ? "#99cc33" : "#041e42";
-          }
+          } else if (rn === "GPS") {
+            iconName = "map";
+            iconColor = focused ? "#99cc33" : "#041e42";
+          } 
 
           return <Ionicons name={iconName} size={size} color={iconColor} />;
         },
@@ -108,6 +112,18 @@ function Tabs() {
         name="Saved"
         component={SavedScreen}
       />
+
+      <Tab.Screen
+        options={{
+          headerShown: false,
+          tabBarLabelStyle: {
+            padding: 10,
+          },
+        }}
+        name="GPS"
+        component={GpsScreen}
+      />
+
 
       <Tab.Screen
         options={{

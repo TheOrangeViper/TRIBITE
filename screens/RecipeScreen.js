@@ -4,14 +4,14 @@ import { useNavigation } from '@react-navigation/native'
 
 
 
-let testing = require('../screens/Testing')
+let db = require('../screens/Testing')
 
 let currentRecipe
 
 const RecipeScreen = () => {
-    for (i = 0; i < testing.dogWater.length; i++){
-        if (testing.dogWater[i].isActive === true){
-            currentRecipe = testing.dogWater[i]
+    for (i = 0; i < db.dogWater.length; i++){
+        if (db.dogWater[i].isActive === true){
+            currentRecipe = db.dogWater[i]
         } 
     }
 
@@ -19,8 +19,8 @@ const RecipeScreen = () => {
 
     const redirect = () => {
         navigation.navigate('Tabs', {screen: 'Home'});
-        for (i = 0; i < testing.dogWater.length; i++){
-            testing.dogWater[i].isActive = false
+        for (i = 0; i < db.dogWater.length; i++){
+            db.dogWater[i].isActive = false
         }
     }
 
@@ -41,7 +41,7 @@ const RecipeScreen = () => {
         <Text>Cuisine : {currentRecipe.cuisine_type}</Text>
         <Text>Servings : {currentRecipe.servings}</Text>
         <Text>You will need:</Text>
-        
+
       </View>
       
       

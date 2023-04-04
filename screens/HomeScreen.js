@@ -11,14 +11,14 @@ const HomeScreen = () => {
 
   const navigation = useNavigation()
 
-  let testing = require('../screens/Testing')
+  let db = require('../screens/Testing')
 
   
 
   const redirect = () => {
     console.log("Recipe button pressed");
-    for (i = 0; i < testing.dogWater.length; i++){
-        console.log(testing.dogWater[i].name, " is active? : ", testing.dogWater[i].isActive)
+    for (i = 0; i < db.dogWater.length; i++){
+        console.log(db.dogWater[i].name, " is active? : ", db.dogWater[i].isActive)
      }
     navigation.replace("Recipe")
   }
@@ -45,23 +45,23 @@ const HomeScreen = () => {
 
         <TextInput placeholder={"Search"} style={styles.searchBar}></TextInput>
         
-        <Text style={styles.header2}>Meals</Text>
+        {/* <Text style={styles.header2}>Meals</Text>
         
         <ScrollView horizontal={true} style={styles.horizontalScroll}>
 
-          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {testing.dogWater[0].isActive = true; console.log(testing.dogWater[0].name, " was pressed"); redirect()}} >
+          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {db.dogWater[0].isActive = true; console.log(db.dogWater[0].name, " was pressed"); redirect()}} >
             <View style = {styles.imageContainer}>
-              <Image source={{uri: testing.dogWater[0].photoUrl}} style={styles.image}/>
+              <Image source={{uri: db.dogWater[0].photoUrl}} style={styles.image}/>
             </View>
-            <Text style = {styles.othertext}> {testing.dogWater[0].name} </Text>
+            <Text style = {styles.othertext}> {db.dogWater[0].name} </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {testing.dogWater[1].isActive = true; console.log(testing.dogWater[1].name, " was pressed"); redirect()}} >
+          <TouchableOpacity style = {styles.tileContainer} onLongPress = { () => {db.dogWater[1].isActive = true; console.log(db.dogWater[1].name, " was pressed"); redirect()}} >
             <View style = {styles.imageContainer}>
-              <Image source={{uri: testing.dogWater[1].photoUrl}} style={styles.image}/>
+              <Image source={{uri: db.dogWater[1].photoUrl}} style={styles.image}/>
             </View>
-            <Text style = {styles.othertext}> {testing.dogWater[1].name} </Text>
-          </TouchableOpacity>
+            <Text style = {styles.othertext}> {db.dogWater[1].name} </Text>
+          </TouchableOpacity> */}
 
           {/* <Recipe key = {testWork.name} name = {testWork.name} ingrediantCount = {testWork.ingrediantCount} image={testWork.image}/> */}
 
@@ -70,30 +70,13 @@ const HomeScreen = () => {
             <Recipe key={recipe.name} name={recipe.name} ingrediantCount={recipe.ingrediantCount} image={recipe.image}/>
           )} */}
 
-        </ScrollView>
-        <Text style={styles.header2}>Snacks</Text>
-        
-        <ScrollView
-          horizontal={true}
-          style={styles.horizontalScroll}>
+        {/* </ScrollView> */}
+        <Text style={styles.header2}>Recipes for You</Text>
 
-          {testing.dogWater.map((recipe)=>{
+        {db.dogWater.map((recipe)=>{
             return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl}/>);
             }
           )}
-
-        </ScrollView>
-
-        {/* <Text style={styles.header2}>Drinks</Text>
-        <ScrollView
-          horizontal={true}
-          style={styles.horizontalScroll}>
-
-          {recipes.map((recipe) => 
-            <Recipe key={recipe.name} name={recipe.name} ingrediantCount={recipe.ingrediantCount} image={recipe.image}/>
-          )}
-
-        </ScrollView> */} 
       </ScrollView>
     </SafeAreaView>
   )
