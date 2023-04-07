@@ -1,16 +1,4 @@
-let dogWater = [
-    // {
-    // name: "Dog",
-    // ingredients: ["dog", "water"],
-    // photoUrl: 'https://www.akc.org/wp-content/uploads/2017/06/how_much_water_should_you_give_a_puppy_hero.jpg', 
-    // isActive:false
-    // },
-    // {
-    // name: "Stink",
-    // ingredients:["skunk", "sulfur"],
-    // photoUrl:'https://i.ytimg.com/vi/uVdKo9zoC_w/maxresdefault.jpg',
-    // isActive:false
-    // },
+let recipes = [
     {
         _id:"64150e6e52d76ec312c13981",
         name:"Green Onion Garlic Naan Bread",
@@ -401,4 +389,4 @@ let dogWater = [
     },
 ];
 
-module.exports = {dogWater};
+module.exports = {recipes};

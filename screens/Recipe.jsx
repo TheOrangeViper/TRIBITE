@@ -10,9 +10,9 @@ const Recipe = (props) => {
   const navigation = useNavigation()
 
   const redirect = () => {
-    for (i = 0; i < testing.dogWater.length; i++){
-      if (testing.dogWater[i].name === name){
-          testing.dogWater[i].isActive = true
+    for (i = 0; i < testing.recipes.length; i++){
+      if (testing.recipes[i].name === name){
+          testing.recipes[i].isActive = true
       }
     }
     navigation.replace("Recipe")

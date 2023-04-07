@@ -17,22 +17,11 @@ const HomeScreen = () => {
 
   const redirect = () => {
     console.log("Recipe button pressed");
-    for (i = 0; i < db.dogWater.length; i++){
-        console.log(db.dogWater[i].name, " is active? : ", db.dogWater[i].isActive)
+    for (i = 0; i < db.recipes.length; i++){
+        console.log(db.recipes[i].name, " is active? : ", db.recipes[i].isActive)
      }
     navigation.replace("Recipe")
   }
-
-  const testDb = () => {
-    console.log("pressed");
-    // console.log("db be :", testing.data);
-  }
-  
-
-  // CAn I use useEffect for this? It listens to see if it has been clicked, and if it has, then WHOO!
-  // const handleRecipeLongPress = () => {
-  //   redirect()
-  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -44,7 +33,7 @@ const HomeScreen = () => {
         <Text style={styles.header2}>Recipes for You</Text>
 
         <View style = {styles.itemContainer}>
-        {db.dogWater.map((recipe)=>{
+        {db.recipes.map((recipe)=>{
             return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl}/>);
             })}
         </View>

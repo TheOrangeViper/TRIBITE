@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 
@@ -9,9 +9,11 @@ let db = require('../screens/Testing')
 let currentRecipe
 
 const RecipeScreen = () => {
-    for (i = 0; i < db.dogWater.length; i++){
-        if (db.dogWater[i].isActive === true){
-            currentRecipe = db.dogWater[i]
+    // const [currentRecipe, setCurrentRecipe] = useState({});
+
+    for (i = 0; i < db.recipes.length; i++){
+        if (db.recipes[i].isActive === true){
+            currentRecipe = db.recipes[i]
         } 
     }
 
@@ -19,8 +21,8 @@ const RecipeScreen = () => {
 
     const redirect = () => {
         navigation.navigate('Tabs', {screen: 'Home'});
-        for (i = 0; i < db.dogWater.length; i++){
-            db.dogWater[i].isActive = false
+        for (i = 0; i < db.recipes.length; i++){
+            db.recipes[i].isActive = false
         }
     }
 
@@ -45,14 +47,13 @@ const RecipeScreen = () => {
             <Text>You will need:</Text>
                 {currentRecipe.ingredients.map((item)=>{
                 return(
-                  <Text key={item.type}>{item.quantity} | {item.type}</Text>);
+                  <Text key={item.type}>{item.quantity} {item.type}</Text>);
                 })}
                 <Text>Instructions</Text>
             {currentRecipe.instructions.map((step)=>{
             return(
               <Text key={step} style={styles.text}>
                 {step}
-                {/* {console.log(step)} */}
               </Text>);
             })}
         
