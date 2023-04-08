@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import {getDatabase, ref, set} from "firebase/database";
+
 
 let testing = require('../screens/Testing')
+let savedRecipes = []
 
 const Recipe = (props) => {
-
   const {name, photoUrl, self} = props;
   const navigation = useNavigation()
 
@@ -16,8 +18,44 @@ const Recipe = (props) => {
       }
     }
     navigation.replace("Recipe")
+    
+    
   }
 
+  const [isSaved, setIsSaved] = useState(false)
+
+   const saveToDatabase = () => {
+    // to test if you can add with button for save
+    // may want to add a new value in the db for "saved = bool"
+    // setSavedRecipes(savedRecipes=>savedRecipes.concat(name))
+    console.log("You pressed the save button of " + name)
+    
+      if (isSaved) {
+        // recipe in saved; want to unsave
+        savedRecipes.splice(i,1)
+        console.log(name + " unsaved. Saved : " + savedRecipes)
+        setIsSaved(false)
+      }
+      else{
+        // recipe is unsaved; want to save
+        savedRecipes.push(name)
+        console.log(name + " pressed. Saved : " + savedRecipes)
+        setIsSaved(true)
+      }
+    
+
+    
+  }
+  
+  let saveState = "Not Saved"
+  if(isSaved){
+    backcolour='blue'
+    saveState = "Saved"
+  }
+  else{
+    backcolour='red'
+    saveState = "Not Saved"
+  }
 
   return(
     <TouchableOpacity key = {name} style = {styles.tileContainer} onLongPress = { () => {console.log(name, " was pressed"); redirect()}} >
@@ -25,6 +63,9 @@ const Recipe = (props) => {
         <Image source={{uri: photoUrl}} style={styles.image}/>
       </View>
       <Text style = {styles.othertext}> {name} </Text>
+      <TouchableOpacity style = {{backgroundColor:backcolour}} onPress={() => saveToDatabase()}>
+        <Text>{saveState}</Text>
+      </TouchableOpacity>
     </TouchableOpacity>);
 };
 

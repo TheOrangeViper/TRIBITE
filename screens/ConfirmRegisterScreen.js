@@ -11,6 +11,8 @@ import {
 
 import { useNavigation } from "@react-navigation/core";
 import { auth } from "../firebase";
+import { getDatabase, ref, set } from "firebase/database";
+
 
 const ConfirmSignUpScreen = () => {
   const user = auth.currentUser;
@@ -26,6 +28,10 @@ const ConfirmSignUpScreen = () => {
       if (isEmailVerified == false) {
         user.sendEmailVerification();
       } else {
+        console.log(auth.currentUser.uid);
+        set(ref(getDatabase(), 'users/' + user.uid), {
+          email: user.email,
+        })
         navigation.navigate("Home");
       }
     });

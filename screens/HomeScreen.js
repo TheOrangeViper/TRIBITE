@@ -34,7 +34,7 @@ const HomeScreen = () => {
 
         <View style = {styles.itemContainer}>
         {db.recipes.map((recipe)=>{
-            return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl}/>);
+            return(<Recipe key={recipe.name} name={recipe.name} photoUrl={recipe.photoUrl} recipe={recipe}/>);
             })}
         </View>
         

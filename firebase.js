@@ -2,6 +2,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import {getDatabase} from 'firebase/database';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,7 +16,8 @@ const firebaseConfig = {
   storageBucket: "trinite-bite.appspot.com",
   messagingSenderId: "599554102882",
   appId: "1:599554102882:web:9c8807e4aadc4bbd9c233b",
-  measurementId: "G-VXW43TDWCK"
+  measurementId: "G-VXW43TDWCK",
+  databaseURL: "https://trinite-bite-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase
@@ -26,7 +29,7 @@ if (firebase.apps.length === 0){
     app = firebase.app()
 }
 
-const db = app.firestore()
+const db = getDatabase(app)
 const auth = firebase.auth()
 
 export{auth, db};
