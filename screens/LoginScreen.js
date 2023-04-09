@@ -40,12 +40,13 @@ const LoginScreen = () => {
         console.log("Logged in with:" + user.email);
         if (user.emailVerified) {
           navigation.navigate("Home");
-          console.log("hey");
+          console.log("Hello");
         } else {
           navigation.navigate("ConfirmRegister");
         }
       })
       .catch((error) => alert(error.message));
+      
   };
 
   const forgotPassword = () => {

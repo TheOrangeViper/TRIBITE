@@ -1,15 +1,82 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
-import {getDatabase, ref, set} from "firebase/database";
+import React, { useCallback, useEffect, useState } from 'react'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import {getDatabase, ref, set, onValue} from "firebase/database";
+import { auth } from '../firebase';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 
 let testing = require('../screens/Testing')
 let savedRecipes = []
+const user = auth.currentUser;
+let backcolour = ""
+let iconName = ""
 
 const Recipe = (props) => {
   const {name, photoUrl, self} = props;
+  
   const navigation = useNavigation()
+  const [isSaved, setIsSaved] = useState(savedRecipes.indexOf(name)>-1)
+
+  let saveState = ""
+  
+  
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // console.log("uid " + user.uid)
+        
+        const savedRef = ref(getDatabase(), 'users/' + user.uid + '/savedRecipes');
+        onValue(savedRef, (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            
+            savedRecipes = snapshot.val();    
+            let index = savedRecipes.indexOf(name)
+            if (index > -1) { 
+              // is in saved recipes
+              setIsSaved(true)
+            }
+            else{ 
+              // is not in saved recipes
+              setIsSaved(false)
+            }
+          });
+        }, {onlyOnce : true}
+        );
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  function updateSavedStatus() {
+    let index = savedRecipes.indexOf(name)
+    const savedRef = ref(getDatabase(), 'users/' + user.uid + '/savedRecipes');
+    onValue(savedRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        savedRecipes = snapshot.val();        
+        if (index > -1) { // is in saved recipes
+          setIsSaved(true)
+        }
+        else{ // is not in saved recipes
+          setIsSaved(false)
+        }
+      });
+    }, {onlyOnce : true}
+    );
+  }
+
+  if(isSaved){
+    backcolour='yellow'
+    saveState = "Saved"
+    iconName='bookmark'
+  }
+  else{
+    backcolour='white'
+    saveState = "Not Saved"
+    iconName='bookmark-outline'
+  }
+    
+  
 
   const redirect = () => {
     for (i = 0; i < testing.recipes.length; i++){
@@ -18,54 +85,41 @@ const Recipe = (props) => {
       }
     }
     navigation.replace("Recipe")
-    
-    
   }
 
-  const [isSaved, setIsSaved] = useState(false)
+  const testButton = () => {
+    console.log(savedRecipes)
+    updateSavedStatus()
+  }  
 
-   const saveToDatabase = () => {
-    // to test if you can add with button for save
-    // may want to add a new value in the db for "saved = bool"
-    // setSavedRecipes(savedRecipes=>savedRecipes.concat(name))
-    console.log("You pressed the save button of " + name)
-    
+   const saveToDatabase = () => {    
       if (isSaved) {
-        // recipe in saved; want to unsave
-        savedRecipes.splice(i,1)
-        console.log(name + " unsaved. Saved : " + savedRecipes)
+        // recipe in saved; want to unsave        
+        savedRecipes.splice(savedRecipes.indexOf(name),1)
         setIsSaved(false)
       }
       else{
         // recipe is unsaved; want to save
-        savedRecipes.push(name)
-        console.log(name + " pressed. Saved : " + savedRecipes)
+        savedRecipes.push(name)        
         setIsSaved(true)
       }
-    
-
-    
+    set(ref(getDatabase(), 'users/' + auth.currentUser.uid), {
+      email : auth.currentUser.email,
+      savedRecipes : savedRecipes
+    })
   }
   
-  let saveState = "Not Saved"
-  if(isSaved){
-    backcolour='blue'
-    saveState = "Saved"
-  }
-  else{
-    backcolour='red'
-    saveState = "Not Saved"
-  }
+  
 
   return(
     <TouchableOpacity key = {name} style = {styles.tileContainer} onLongPress = { () => {console.log(name, " was pressed"); redirect()}} >
       <View style = {styles.imageContainer}>
         <Image source={{uri: photoUrl}} style={styles.image}/>
+        <TouchableOpacity style = {{height:75, width:75, position:'absolute', alignSelf: 'flex-end'}} onPress={() => saveToDatabase()}>
+          <Ionicons name={iconName} size={60} color={backcolour}/>
+        </TouchableOpacity>
       </View>
       <Text style = {styles.othertext}> {name} </Text>
-      <TouchableOpacity style = {{backgroundColor:backcolour}} onPress={() => saveToDatabase()}>
-        <Text>{saveState}</Text>
-      </TouchableOpacity>
     </TouchableOpacity>);
 };
 
@@ -75,7 +129,6 @@ const styles = StyleSheet.create({
     tileContainer : {
         borderWidth:2,
         borderRadius:20,
-        // marginRight:30,
         marginVertical:30,
         backgroundColor:'white',
         padding:10,
