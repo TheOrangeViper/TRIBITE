@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     marginHorizontal:'10%',
     // borderColor: '#d1d1d1',
   },
-  // HELP
   tileContainer : {
     borderWidth:2,
     borderRadius:20,
