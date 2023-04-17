@@ -1,7 +1,7 @@
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { StyleSheet, View, Dimensions, Text, TouchableOpacity, } from "react-native";
 import { GooglePlaceDetail, GooglePlacesAutocomplete, } from "react-native-google-places-autocomplete";
-import { GOOGLE_API_KEY } from "../locations";
+import { GOOGLE_API_KEY } from "../enviroment";
 import Constants from "expo-constants";
 import { useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
