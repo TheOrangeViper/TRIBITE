@@ -117,7 +117,7 @@ export default function App() {
             origin={origin}
             destination={destination}
             apikey={GOOGLE_API_KEY}
-            strokeColor="#6644ff"
+            strokeColor="#041E42"
             strokeWidth={4}
             onReady={traceRouteOnReady}
           />
