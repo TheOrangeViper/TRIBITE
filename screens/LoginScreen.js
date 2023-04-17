@@ -37,16 +37,13 @@ const LoginScreen = () => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log("Logged in with:" + user.email);
         if (user.emailVerified) {
           navigation.navigate("Home");
-          console.log("Hello");
         } else {
           navigation.navigate("ConfirmRegister");
         }
       })
       .catch((error) => alert(error.message));
-      
   };
 
   const forgotPassword = () => {
@@ -54,7 +51,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={require("../assets/logo6.png")} style={styles.image} />
       </View>
@@ -89,7 +86,7 @@ const LoginScreen = () => {
           <Text style={styles.link}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
