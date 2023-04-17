@@ -3,10 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  createBottomTabNavigator,
-  useBottomTabBarHeight,
-} from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator, useBottomTabBarHeight, } from "@react-navigation/bottom-tabs";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ConfirmRegisterScreen from "./screens/ConfirmRegisterScreen";
@@ -19,7 +16,7 @@ import GroceryListScreen from "./screens/GroceryListScreen";
 import SavedScreen from "./screens/SavedScreen";
 import Profile from "./screens/ProfileScreen";
 import RecipeScreen from "./screens/RecipeScreen";
-// import GpsScreen from "./screens/GpsScreen";
+import GpsScreen from "./screens/GpsScreen";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BottomTabBarHeightContext } from "@react-navigation/bottom-tabs";
 
@@ -113,7 +110,7 @@ function Tabs() {
         component={SavedScreen}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         options={{
           headerShown: false,
           tabBarLabelStyle: {
@@ -122,7 +119,7 @@ function Tabs() {
         }}
         name="GPS"
         component={GpsScreen}
-      /> */}
+      />
 
       <Tab.Screen
         options={{
