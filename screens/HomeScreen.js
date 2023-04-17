@@ -9,22 +9,23 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/native";
 import Recipe from "./Recipe";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 const HomeScreen = () => {
-  // const [currentRecipe, setCurrentRecipe] = React.useState({name:"HA LAMO"});
-
   const navigation = useNavigation();
+  const user = auth.currentUser;
+  const savedRef = ref(getDatabase(), "recipes");
 
   let db = require("../screens/Testing");
 
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/tastywallpaper.png")}
+        source={require("../assets/blurredtastywallpaper.png")}
         style={styles.backgroundImage}
       >
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
+    marginTop: 20,
     maxWidth: 500,
     height: 200,
     resizeMode: "contain",

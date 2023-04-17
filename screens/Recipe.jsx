@@ -22,8 +22,6 @@ const Recipe = (props) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        // console.log("uid " + user.uid)
-
         const savedRef = ref(
           getDatabase(),
           "users/" + user.uid + "/savedRecipes"
@@ -91,7 +89,6 @@ const Recipe = (props) => {
   };
 
   const testButton = () => {
-    console.log(savedRecipes);
     updateSavedStatus();
   };
 
@@ -116,7 +113,6 @@ const Recipe = (props) => {
       key={name}
       style={styles.tileContainer}
       onPress={() => {
-        console.log(name, " was pressed");
         redirect();
       }}
     >
@@ -163,7 +159,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     textAlignVertical: "center",
-    color: "white",
+    color: "#041E42",
     backgroundColor: "#99CC33",
     borderRadius: 40,
   },

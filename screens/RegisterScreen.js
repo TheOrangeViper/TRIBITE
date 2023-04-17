@@ -30,7 +30,6 @@ const SignUpScreen = () => {
       )
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log("Registerd with:" + user.email);
       })
       .catch((error) => alert(error.message));
   };
@@ -62,7 +61,7 @@ const SignUpScreen = () => {
     console.warn("Privacy Policy Pressed");
   };
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <View style={styles.container} behavior="padding">
       <Text style={styles.text}>Create an account</Text>
       <View style={styles.inputContainer}>
         <TextInput
@@ -104,7 +103,7 @@ const SignUpScreen = () => {
           <Text style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

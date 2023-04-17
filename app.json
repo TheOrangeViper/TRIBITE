@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "TribiteApp",
+    "name": "Tribite",
     "slug": "TribiteApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/default_pfp.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/tribite_splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
