@@ -1,25 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Keyboard,
-  ScrollView,
-  ImageBackground,
-} from "react-native";
+import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView, ImageBackground, } from "react-native";
 import Task from "../components/Task";
-import {
-  getDatabase,
-  ref,
-  set,
-  push,
-  update,
-  child,
-  get,
-} from "firebase/database";
+import { getDatabase, ref, set, push, update, child,get, } from "firebase/database";
 import { auth } from "../firebase";
 
 export default function App() {
