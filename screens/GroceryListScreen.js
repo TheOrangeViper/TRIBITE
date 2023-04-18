@@ -1,8 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView, ImageBackground, } from "react-native";
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Keyboard,
+  ScrollView,
+  ImageBackground,
+} from "react-native";
 import Task from "../components/Task";
-import { getDatabase, ref, set, push, update, child,get, } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  update,
+  child,
+  get,
+} from "firebase/database";
 import { auth } from "../firebase";
+import { useIsFocused } from "@react-navigation/native";
 
 export default function App() {
   const [task, setTask] = useState();
@@ -10,18 +29,32 @@ export default function App() {
   const [pantryItems, setPantryItems] = useState([]);
   const db = getDatabase();
   const user = auth.currentUser;
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     get(child(ref(db), "/users/" + user.uid + "/groceryList/"))
       .then((snapshot) => {
         if (snapshot.exists()) {
           setTaskItems(snapshot.val());
+        } else {
+          setTaskItems([]);
         }
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+    get(child(ref(db), "/users/" + user.uid + "/pantry/"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setPantryItems(snapshot.val());
+        } else {
+          setPantryItems([]);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [isFocused]);
 
   const handleAddTask = () => {
     Keyboard.dismiss();
@@ -41,12 +74,14 @@ export default function App() {
     let itemsCopy = [...taskItems];
     itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
+    console.log(pantryItems);
+    const updates = {};
+    updates["/users/" + user.uid + "/groceryList/"] = itemsCopy;
     const newPantryItems = [...pantryItems, item];
     setPantryItems(newPantryItems);
-    const updates = {};
     updates["/users/" + user.uid + "/pantry/"] = newPantryItems;
-    updates["/users/" + user.uid + "/groceryList/"] = itemsCopy;
     update(ref(db), updates);
+    console.log(pantryItems);
   };
 
   return (
@@ -105,7 +140,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
   },
   tasksWrapper: {
     paddingTop: 75,
@@ -134,7 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "#C0C0C0",
     borderWidth: 1,
-    width: 250,
+    width: "80%",
   },
   addWrapper: {
     width: 60,
