@@ -74,23 +74,22 @@ export default function App() {
     let itemsCopy = [...taskItems];
     itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
-    console.log(pantryItems);
     const updates = {};
     updates["/users/" + user.uid + "/groceryList/"] = itemsCopy;
     const newPantryItems = [...pantryItems, item];
     setPantryItems(newPantryItems);
     updates["/users/" + user.uid + "/pantry/"] = newPantryItems;
     update(ref(db), updates);
-    console.log(pantryItems);
   };
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/tastywallpaperv2.png")}
+        source={require("../assets/tastywallpaperv3.png")}
         style={styles.backgroundImage}
       >
         <ScrollView
+          style={styles.scrollView}
           contentContainerStyle={{
             flexGrow: 1,
           }}
@@ -141,8 +140,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollView: {
+    marginBottom: 80,
+  },
   tasksWrapper: {
-    paddingTop: 75,
+    paddingTop: 70,
+    marginBottom: 100,
     paddingHorizontal: 15,
   },
   sectionTitle: {

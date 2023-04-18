@@ -23,9 +23,7 @@ const PantryItem = ({ keyword }) => {
         const data = await response.json();
         const image = data.results[0].urls.regular;
         setImageUrl(image);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     };
     fetchImage();
   }, [keyword]);

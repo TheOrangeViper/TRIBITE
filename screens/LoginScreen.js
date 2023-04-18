@@ -8,6 +8,7 @@ import {
   Touchable,
   TouchableOpacity,
   View,
+  ImageBackground,
 } from "react-native";
 import React from "react";
 import { auth } from "../firebase";
@@ -51,7 +52,11 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("../assets/loginwallpaper.png")}
+      style={styles.backgroundImage}
+    >
+      {/* <View style={styles.container}> */}
       <View style={styles.imageContainer}>
         <Image source={require("../assets/logo6.png")} style={styles.image} />
       </View>
@@ -86,7 +91,8 @@ const LoginScreen = () => {
           <Text style={styles.link}>Forgot Password?</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      {/* </View> */}
+    </ImageBackground>
   );
 };
 
@@ -154,5 +160,12 @@ const styles = StyleSheet.create({
     padding: "10%",
     color: "#041e42",
     fontWeight: "bold",
+  },
+  backgroundImage: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
   },
 });

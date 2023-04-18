@@ -56,8 +56,8 @@ const InventoryScreen = () => {
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
-        <Text style={styles.header1}>Pantry</Text>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text style={styles.header1}>Pantry</Text>
           <View style={styles.pantryContainer}>
             {pantryItemsList.map((item) => {
               return (
@@ -81,11 +81,12 @@ export default InventoryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: "20%",
+    marginTop: 70,
+    marginBottom: "20%",
     marginHorizontal: "5%",
   },
   pantryContainer: {
-    marginVertical: 50,
+    marginVertical: 30,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",

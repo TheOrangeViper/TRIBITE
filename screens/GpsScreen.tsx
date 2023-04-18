@@ -1,11 +1,19 @@
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { StyleSheet, View, Dimensions, Text, TouchableOpacity, } from "react-native";
-import { GooglePlaceDetail, GooglePlacesAutocomplete, } from "react-native-google-places-autocomplete";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import {
+  GooglePlaceDetail,
+  GooglePlacesAutocomplete,
+} from "react-native-google-places-autocomplete";
 import { GOOGLE_API_KEY } from "../enviroment";
 import Constants from "expo-constants";
 import { useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
-
 
 const { width, height } = Dimensions.get("window");
 
@@ -125,12 +133,14 @@ export default function App() {
       </MapView>
       <View style={styles.searchContainer}>
         <InputAutocomplete
+          placeholder="Where are you?"
           label="Origin"
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "origin");
           }}
         />
         <InputAutocomplete
+          placeholder="Ex. Food Bank"
           label="Destination"
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "destination");
@@ -172,20 +182,23 @@ const styles = StyleSheet.create({
     elevation: 4,
     padding: 8,
     borderRadius: 8,
-    top: Constants.statusBarHeight,
+    bottom: 0,
+    marginBottom: 130,
   },
   input: {
-    borderColor: "#43B02A",
+    borderColor: "#041E42",
     borderWidth: 2,
     borderRadius: 10,
   },
   button: {
-    backgroundColor: "#43B02A",
+    backgroundColor: "#041E42",
     paddingVertical: 12,
     marginTop: 16,
     borderRadius: 10,
   },
   buttonText: {
     textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
   },
 });

@@ -33,11 +33,6 @@ const RecipeScreen = () => {
 
   return (
     <SafeAreaView>
-      <TouchableOpacity onPress={redirect}>
-        <View style={styles.backArrow}>
-          <Text style={styles.backArrowText}>Click to go back</Text>
-        </View>
-      </TouchableOpacity>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.imageContainer}>
           <Image
@@ -62,18 +57,18 @@ const RecipeScreen = () => {
           </View>
           <View style={styles.line}></View>
           <View style={styles.textContainerBelow}>
-            <Text>You will need:</Text>
+            <Text style={styles.header1}>You will need:</Text>
             {currentRecipe.ingredients.map((item) => {
               return (
-                <Text key={item.type}>
+                <Text style={styles.header2} key={item.type}>
                   {item.quantity} {item.type}
                 </Text>
               );
             })}
-            <Text>{"\n"}Instructions</Text>
+            <Text style={styles.header1}>{"\n"}Instructions</Text>
             {currentRecipe.instructions.map((step) => {
               return (
-                <Text key={step} style={styles.text}>
+                <Text style={styles.header3} key={step}>
                   {step}
                 </Text>
               );
@@ -81,6 +76,11 @@ const RecipeScreen = () => {
           </View>
         </View>
       </ScrollView>
+      <TouchableOpacity style={styles.arrow} onPress={redirect}>
+        <View style={styles.arrowSize}>
+          <Text style={styles.backArrowText}>{"<"}</Text>
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -89,12 +89,44 @@ export default RecipeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: "10%",
+    marginVertical: "10%",
     marginHorizontal: "10%",
+  },
+  arrow: {
+    position: "absolute",
+    bottom: 1,
+    left: 1,
+    marginLeft: 20,
+    marginBottom: 20,
+    borderRadius: 100,
+    backgroundColor: "#041E42",
+  },
+  backArrowText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "white",
+    textAlignVertical: "center",
+    textAlign: "center",
+  },
+  arrowSize: {
+    height: 50,
+    width: 50,
+    backgroundColor: "#041E42",
+    borderRadius: 100,
   },
   header1: {
     fontSize: 30,
     fontWeight: "bold",
+    paddingVertical: 10,
+  },
+  header2: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingVertical: 10,
+  },
+  header3: {
+    fontSize: 20,
+    fontWeight: "400",
     paddingVertical: 10,
   },
   imageContainer: {
@@ -142,22 +174,5 @@ const styles = StyleSheet.create({
   textTop: {
     fontWeight: "bold",
     fontSize: 18,
-  },
-  textBottom: {},
-  backArrow: {
-    position: "relative",
-    top: 1,
-    left: 1,
-    height: 60,
-    width: "100%",
-    backgroundColor: "#FF4141",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  backArrowText: {
-    fontSize: 20,
-    color: "white",
-    textAlignVertical: "center",
-    textAlign: "center",
   },
 });
