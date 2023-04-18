@@ -3,7 +3,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator, useBottomTabBarHeight, } from "@react-navigation/bottom-tabs";
+import {
+  createBottomTabNavigator,
+  useBottomTabBarHeight,
+} from "@react-navigation/bottom-tabs";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ConfirmRegisterScreen from "./screens/ConfirmRegisterScreen";
@@ -13,7 +16,7 @@ import HomeScreen from "./screens/HomeScreen";
 import SettingScreen from "./screens/SettingScreen";
 import InventoryScreen from "./screens/InventoryScreen";
 import GroceryListScreen from "./screens/GroceryListScreen";
-import SavedScreen from "./screens/SavedScreen";
+// import SavedScreen from "./screens/SavedScreen";
 import Profile from "./screens/ProfileScreen";
 import RecipeScreen from "./screens/RecipeScreen";
 import GpsScreen from "./screens/GpsScreen";
@@ -98,7 +101,7 @@ function Tabs() {
         name="Pantry"
         component={InventoryScreen}
       />
-
+      {/* 
       <Tab.Screen
         options={{
           headerShown: false,
@@ -108,7 +111,7 @@ function Tabs() {
         }}
         name="Saved"
         component={SavedScreen}
-      />
+      /> */}
 
       <Tab.Screen
         options={{

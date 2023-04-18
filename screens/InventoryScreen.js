@@ -5,6 +5,7 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import PantryItem from "../components/PantryItem";
@@ -50,23 +51,28 @@ const InventoryScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header1}>Pantry</Text>
-      <ScrollView>
-        <View style={styles.pantryContainer}>
-          {pantryItemsList.map((item) => {
-            return (
-              <TouchableOpacity
-                key={item}
-                onLongPress={() => removeItem({ item })}
-              >
-                <PantryItem keyword={item}></PantryItem>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      </ScrollView>
-    </View>
+    <ImageBackground
+      source={require("../assets/tastywallpaperv2.png")}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
+        <Text style={styles.header1}>Pantry</Text>
+        <ScrollView>
+          <View style={styles.pantryContainer}>
+            {pantryItemsList.map((item) => {
+              return (
+                <TouchableOpacity
+                  key={item}
+                  onLongPress={() => removeItem({ item })}
+                >
+                  <PantryItem keyword={item}></PantryItem>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -92,5 +98,13 @@ const styles = StyleSheet.create({
     fontSize: 45,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  backgroundImage: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    flexDirection: "row",
+    opacity: 1,
   },
 });
